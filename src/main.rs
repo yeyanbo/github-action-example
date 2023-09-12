@@ -19,8 +19,8 @@ async fn main() {
         .route("/", get(welcome));
 
     let addr = SocketAddr::from(([0, 0, 0, 0], 3000));
-    tracing::info!("listening on {}", &addr);
-    
+    tracing::info!("listening on {} ...", &addr);
+
     axum::Server::bind(&addr)
         //使用这种调用方式替代nto_make_service，可以获取客户端连接信息
         .serve(routes.into_make_service_with_connect_info::<SocketAddr>())
