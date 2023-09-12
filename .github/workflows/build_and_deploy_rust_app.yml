@@ -6,7 +6,7 @@ on:
       - "[0-9]+.[0-9]+.[0-9]+"
 
 jobs:
-  say_hello:
+  build_and_upload:
       runs-on: ubuntu-latest
       steps:
         - name: Install Rust
@@ -20,3 +20,10 @@ jobs:
         - name: Get Release Version From the Tag
           shell: bash
           run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+
+        - name: Build
+          uses: actions-rs/cargo@v1
+          with:
+            use-cross: true
+            command: build
+            args: --verbose --release --target x86_64-unknown-linux-musl
