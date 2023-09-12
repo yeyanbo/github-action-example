@@ -32,7 +32,7 @@ jobs:
           shell: bash
           run: |
             # Replace with the name of your binary
-            binary_name="<BINARY_NAME>"
+            binary_name="test"
   
             dirname="$binary_name-${{ env.VERSION }}-x86_64-unknown-linux-musl"
             mkdir "$dirname"
